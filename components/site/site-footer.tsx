@@ -8,7 +8,7 @@ import { mainNav, site } from "@/lib/site";
 const contactRows = [
   { icon: PhoneIcon, label: site.contact.phone },
   { icon: MailIcon, label: site.contact.email },
-  { icon: MapPinIcon, label: site.contact.address },
+  // { icon: MapPinIcon, label: site.contact.address },
   { icon: ClockIcon, label: site.contact.hours },
 ];
 

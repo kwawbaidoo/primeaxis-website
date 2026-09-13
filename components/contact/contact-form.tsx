@@ -154,12 +154,6 @@ export function ContactForm({
       </div>
 
       <div className="flex flex-col-reverse gap-4 pt-1 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-muted-foreground">
-          <span aria-hidden className="text-destructive">
-            *
-          </span>{" "}
-          Required
-        </p>
         <Button
           type="submit"
           size="lg"

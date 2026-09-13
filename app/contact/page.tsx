@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMetadata({
 const details = [
   { icon: PhoneIcon, label: "Phone", value: site.contact.phone },
   { icon: MailIcon, label: "Email", value: site.contact.email },
-  { icon: MapPinIcon, label: "Office", value: site.contact.address },
+  // { icon: MapPinIcon, label: "Office", value: site.contact.address || "N/A" },
   { icon: ClockIcon, label: "Hours", value: site.contact.hours },
 ];
 
