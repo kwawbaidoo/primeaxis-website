@@ -18,4 +18,6 @@ export type ContactFormState =
       fieldErrors?: Partial<Record<ContactField, string[]>>;
       /** What the visitor typed, so the form can be refilled. */
       values: Record<ContactField, string>;
+      /** Differs on every failed submit, so the form can remount with `values`. */
+      submittedAt: number;
     };

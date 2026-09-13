@@ -76,6 +76,9 @@ export function ContactForm({
 
   return (
     <form
+      // Fields only read defaultValue when they mount, so remount the form after
+      // each failed submit to refill what the visitor typed.
+      key={state.status === "error" ? state.submittedAt : "new"}
       ref={formRef}
       action={formAction}
       className="relative flex flex-col gap-5 rounded-xl border bg-card p-6 md:p-8"
@@ -112,12 +115,7 @@ export function ContactForm({
       </div>
 
       <Field label="Service you're interested in" field="service" errors={errors.service}>
-        {/* A select only reads defaultValue when it mounts, so remount it to refill the choice. */}
-        <NativeSelect
-          key={values?.service ?? ""}
-          {...fieldProps("service")}
-          className="w-full [&_select]:h-11"
-        >
+        <NativeSelect {...fieldProps("service")} className="w-full [&_select]:h-11">
           <NativeSelectOption value="">Choose a service</NativeSelectOption>
           {serviceOptions.map((option) => (
             <NativeSelectOption key={option.value} value={option.value}>

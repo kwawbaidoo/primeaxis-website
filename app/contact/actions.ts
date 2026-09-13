@@ -47,6 +47,13 @@ const contactSchema = z.object({
 
 const sendFailed = `We couldn't send your message just now. Please try again, or email us at ${site.contact.email}.`;
 
+/** Visitors see the friendly message; `npm run dev` also shows why sending failed. */
+function sendFailedMessage(reason: string) {
+  return process.env.NODE_ENV === "development"
+    ? `${sendFailed} (Shown in development only: ${reason})`
+    : sendFailed;
+}
+
 export async function sendContactMessage(
   _previous: ContactFormState,
   formData: FormData
@@ -54,6 +61,7 @@ export async function sendContactMessage(
   const values = Object.fromEntries(
     contactFields.map((field) => [field, String(formData.get(field) ?? "")])
   ) as Record<ContactField, string>;
+  const submittedAt = Date.now();
 
   // Spam trap: people never see this field, so anything in it came from a bot.
   // Report success so the bot moves on, but send nothing.
@@ -68,16 +76,17 @@ export async function sendContactMessage(
       message: "Check the highlighted fields and try again.",
       fieldErrors: z.flattenError(parsed.error).fieldErrors,
       values,
+      submittedAt,
     };
   }
 
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO_EMAIL;
   if (!apiKey || !to) {
-    console.error(
-      "Contact form: RESEND_API_KEY and CONTACT_TO_EMAIL must be set to send messages."
-    );
-    return { status: "error", message: sendFailed, values };
+    const reason =
+      "RESEND_API_KEY and CONTACT_TO_EMAIL must be set in .env.local, then restart the dev server.";
+    console.error(`Contact form: ${reason}`);
+    return { status: "error", message: sendFailedMessage(reason), values, submittedAt };
   }
 
   const { name, email, phone, company, service, message } = parsed.data;
@@ -104,7 +113,12 @@ export async function sendContactMessage(
 
   if (error) {
     console.error("Contact form: Resend did not accept the message.", error);
-    return { status: "error", message: sendFailed, values };
+    return {
+      status: "error",
+      message: sendFailedMessage(`Resend said: ${error.message}`),
+      values,
+      submittedAt,
+    };
   }
 
   return { status: "success" };
