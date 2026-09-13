@@ -1,8 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
+import { shareImage, siteUrl } from "@/lib/metadata";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -14,11 +15,21 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: siteUrl,
   title: {
     default: `${site.name} | ${site.tagline}`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    title: `${site.name} | ${site.tagline}`,
+    description: site.description,
+    url: "/",
+    images: [shareImage],
+  },
+  twitter: { card: "summary_large_image" },
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
@@ -30,6 +41,10 @@ export const metadata: Metadata = {
     ],
   },
   manifest: "/site.webmanifest",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0b2545",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -7,6 +7,7 @@ import { PageHeader } from "@/components/site/page-header";
 import { SectionHeading } from "@/components/site/section-heading";
 import { ServiceCard } from "@/components/site/service-grid";
 import { buttonVariants } from "@/components/ui/button";
+import { pageMetadata } from "@/lib/metadata";
 import { getService, services } from "@/lib/services";
 import { cn } from "@/lib/utils";
 
@@ -21,7 +22,11 @@ export async function generateMetadata({
 }: PageProps<"/services/[slug]">): Promise<Metadata> {
   const service = getService((await params).slug);
   if (!service) return {};
-  return { title: service.title, description: service.summary };
+  return pageMetadata({
+    title: service.title,
+    description: service.summary,
+    path: `/services/${service.slug}`,
+  });
 }
 
 export default async function ServicePage({

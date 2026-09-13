@@ -3,12 +3,14 @@ import { CtaBand } from "@/components/home/cta-band";
 import { Process } from "@/components/home/process";
 import { PageEyebrow, PageHeader } from "@/components/site/page-header";
 import { ServiceGrid } from "@/components/site/service-grid";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Services",
   description:
     "Web development, custom software, mobile apps, API integration, graphic design and printing, social media management, IT skills training and IT accessories.",
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

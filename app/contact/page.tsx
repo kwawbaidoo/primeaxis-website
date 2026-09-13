@@ -3,12 +3,14 @@ import type { Metadata } from "next";
 import { ContactForm } from "@/components/contact/contact-form";
 import { PageEyebrow, PageHeader } from "@/components/site/page-header";
 import { services } from "@/lib/services";
+import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Contact",
   description: `Tell ${site.name} about your project and we'll reply with a quote.`,
-};
+  path: "/contact",
+});
 
 const details = [
   { icon: PhoneIcon, label: "Phone", value: site.contact.phone },

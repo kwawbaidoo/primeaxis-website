@@ -4,12 +4,14 @@ import { Mission } from "@/components/about/mission";
 import { Team } from "@/components/about/team";
 import { CtaBand } from "@/components/home/cta-band";
 import { PageEyebrow, PageHeader } from "@/components/site/page-header";
+import { pageMetadata } from "@/lib/metadata";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "About",
   description: `Learn about ${site.name}: our mission, the values behind our work and the team you'll work with.`,
-};
+  path: "/about",
+});
 
 const sections = [
   { href: "#mission", label: "Mission" },
