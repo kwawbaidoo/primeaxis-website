@@ -1,11 +1,21 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
 
+/** True once SITE_URL points at the real domain. */
+export const isSiteUrlConfigured = Boolean(process.env.SITE_URL);
+
 /**
  * Public address of the site, used for canonical links, share previews and the
- * sitemap. Set SITE_URL once the domain is live; the fallback is a placeholder.
+ * sitemap. Until SITE_URL is set this is a placeholder, and the site asks search
+ * engines not to index it (see app/robots.ts and the root layout).
  */
 export const siteUrl = new URL(process.env.SITE_URL || "https://www.example.com");
+
+if (!isSiteUrlConfigured && process.env.NODE_ENV === "production") {
+  console.warn(
+    "SITE_URL is not set: using a placeholder address and asking search engines not to index the site."
+  );
+}
 
 /** Link preview image for social media and messaging apps (public/og-image.png). */
 export const shareImage = {

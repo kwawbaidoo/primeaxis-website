@@ -138,10 +138,19 @@ export function ContactForm({
         />
       </Field>
 
-      {/* Spam trap, hidden from people and assistive technology. */}
+      {/* Spam trap, hidden from people and assistive technology. The name avoids
+          words like "website" or "company" that browsers and password managers autofill. */}
       <div aria-hidden className="absolute -left-[9999px] size-px overflow-hidden">
-        <label htmlFor="website">Website</label>
-        <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
+        <label htmlFor="form_check">Leave this field empty</label>
+        <input
+          id="form_check"
+          name="form_check"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          data-1p-ignore
+          data-lpignore="true"
+        />
       </div>
 
       <div className="flex flex-col-reverse gap-4 pt-1 sm:flex-row sm:items-center sm:justify-between">

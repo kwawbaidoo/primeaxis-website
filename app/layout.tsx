@@ -3,7 +3,7 @@ import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
-import { shareImage, siteUrl } from "@/lib/metadata";
+import { isSiteUrlConfigured, shareImage, siteUrl } from "@/lib/metadata";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -30,6 +30,8 @@ export const metadata: Metadata = {
     images: [shareImage],
   },
   twitter: { card: "summary_large_image" },
+  // Keep placeholder-address builds out of search results until SITE_URL is set.
+  ...(!isSiteUrlConfigured && { robots: { index: false, follow: false } }),
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },

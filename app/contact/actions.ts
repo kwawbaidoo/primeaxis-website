@@ -57,7 +57,7 @@ export async function sendContactMessage(
 
   // Spam trap: people never see this field, so anything in it came from a bot.
   // Report success so the bot moves on, but send nothing.
-  if (String(formData.get("website") ?? "") !== "") {
+  if (String(formData.get("form_check") ?? "") !== "") {
     return { status: "success" };
   }
 
