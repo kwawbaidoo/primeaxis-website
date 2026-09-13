@@ -1,14 +1,18 @@
 import {
+  BadgeCheckIcon,
   FileCheckIcon,
+  HandshakeIcon,
   HeadsetIcon,
   LayersIcon,
+  MessageSquareTextIcon,
+  ShieldCheckIcon,
   TrendingUpIcon,
   type LucideIcon,
 } from "lucide-react";
 import type { ServiceGroup } from "@/lib/services";
 import { site } from "@/lib/site";
 
-// Draft copy for the home page. Anything in [BRACKETS] is a placeholder.
+// Draft copy for the home and about pages. Anything in [BRACKETS] is a placeholder.
 
 export const pillars: { group: ServiceGroup; summary: string }[] = [
   {
@@ -106,3 +110,46 @@ export const faqs = [
     answer: `Yes. We design and print business cards, flyers, banners, brochures and more, with delivery available in ${site.contact.serviceArea}.`,
   },
 ];
+
+export const coreValues: { title: string; description: string; icon: LucideIcon }[] = [
+  {
+    title: "Clarity",
+    description:
+      "Plain language, written quotes and honest timelines, so you always know where your project stands.",
+    icon: MessageSquareTextIcon,
+  },
+  {
+    title: "Quality",
+    description:
+      "We test our work, pay attention to the details and only hand over what we're proud to put our name on.",
+    icon: BadgeCheckIcon,
+  },
+  {
+    title: "Partnership",
+    description:
+      "We treat your goals as our own and stay involved long after launch.",
+    icon: HandshakeIcon,
+  },
+  {
+    title: "Reliability",
+    description:
+      "We do what we say, when we say, and tell you early if anything changes.",
+    icon: ShieldCheckIcon,
+  },
+];
+
+export type TeamMember = {
+  id: string;
+  name: string;
+  role: string;
+  bio: string;
+  /** Path under /public, e.g. "/team/jane.jpg". A placeholder shows when empty. */
+  photo?: string;
+};
+
+export const team: TeamMember[] = [1, 2, 3, 4].map((n) => ({
+  id: `member-${n}`,
+  name: "[TEAM MEMBER NAME]",
+  role: "[ROLE]",
+  bio: "[One or two sentences about their experience and what they work on.]",
+}));

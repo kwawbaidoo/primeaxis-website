@@ -17,7 +17,7 @@ export function PageHeader({
     <section className="bg-navy">
       <div className="container-site flex flex-col gap-5 py-14 md:py-20 lg:py-24">
         {eyebrow}
-        <h1 className="max-w-3xl text-4xl leading-[1.12] font-bold tracking-tight text-white sm:text-5xl">
+        <h1 className="max-w-3xl text-4xl leading-[1.12] font-bold tracking-tight text-pretty text-white sm:text-5xl sm:text-balance">
           {title}
         </h1>
         {intro && (

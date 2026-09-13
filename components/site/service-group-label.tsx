@@ -1,7 +1,7 @@
 import type { ServiceGroup } from "@/lib/services";
 import { cn } from "@/lib/utils";
 
-const dotColor: Record<ServiceGroup, string> = {
+export const serviceGroupDot: Record<ServiceGroup, string> = {
   Build: "bg-teal",
   Grow: "bg-gold",
   Equip: "bg-bright",
@@ -16,7 +16,7 @@ export function ServiceGroupLabel({
 }) {
   return (
     <div className={cn("flex items-center gap-2.5", className)}>
-      <span className={cn("size-2 shrink-0 rounded-full", dotColor[group])} />
+      <span className={cn("size-2 shrink-0 rounded-full", serviceGroupDot[group])} />
       <span className="font-heading text-xs font-semibold tracking-[0.16em] text-navy uppercase">
         {group}
       </span>
