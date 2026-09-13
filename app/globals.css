@@ -117,7 +117,8 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    /* Keep anchors and focused fields clear of the sticky header. */
+    @apply scroll-pt-20 font-sans;
   }
   h1,
   h2,
