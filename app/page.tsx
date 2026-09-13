@@ -1,17 +1,19 @@
-import { site } from "@/lib/site";
+import { CtaBand } from "@/components/home/cta-band";
+import { Faq } from "@/components/home/faq";
+import { Hero } from "@/components/home/hero";
+import { Process } from "@/components/home/process";
+import { ServicesOverview } from "@/components/home/services-overview";
+import { WhyUs } from "@/components/home/why-us";
 
 export default function HomePage() {
   return (
-    <section className="bg-navy">
-      <div className="container-site py-24 md:py-32">
-        <h1 className="max-w-3xl text-4xl leading-tight font-bold tracking-tight text-white md:text-6xl">
-          One partner for your{" "}
-          <span className="text-teal">software, design and IT</span> needs.
-        </h1>
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-on-navy">
-          {site.description}
-        </p>
-      </div>
-    </section>
+    <>
+      <Hero />
+      <ServicesOverview />
+      <Process />
+      <WhyUs />
+      <Faq />
+      <CtaBand />
+    </>
   );
 }

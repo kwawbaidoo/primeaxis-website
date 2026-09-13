@@ -11,6 +11,7 @@ export const site = {
     address: "[OFFICE ADDRESS]",
     hours: "[BUSINESS HOURS]",
     serviceArea: "[CITY / REGION]",
+    responseTime: "[RESPONSE TIME]",
   },
 };
 
