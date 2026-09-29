@@ -1,10 +1,14 @@
 import { PhoneIcon } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
+import { phoneHref } from "@/lib/contact-links";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function CtaBand() {
+  const callClassName =
+    "flex items-center justify-center gap-2 text-[0.9375rem] font-semibold whitespace-nowrap text-white";
+
   return (
     <section className="relative overflow-hidden bg-corporate">
       <svg
@@ -44,10 +48,20 @@ export function CtaBand() {
           >
             Get a Quote
           </Link>
-          <p className="flex items-center justify-center gap-2 text-[0.9375rem] font-semibold whitespace-nowrap text-white">
-            <PhoneIcon className="size-4.5" aria-hidden />
-            or call {site.contact.phone}
-          </p>
+          {phoneHref ? (
+            <a
+              href={phoneHref}
+              className={cn(callClassName, "min-h-11 underline-offset-4 hover:underline")}
+            >
+              <PhoneIcon className="size-4.5" aria-hidden />
+              or call {site.contact.phone}
+            </a>
+          ) : (
+            <p className={callClassName}>
+              <PhoneIcon className="size-4.5" aria-hidden />
+              or call {site.contact.phone}
+            </p>
+          )}
         </div>
       </div>
     </section>

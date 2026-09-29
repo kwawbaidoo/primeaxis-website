@@ -58,10 +58,6 @@ export function Hero() {
               Explore services
             </Link>
           </div>
-          <p className="flex items-center gap-2 text-sm text-on-navy-muted">
-            <MapPinIcon className="size-4.5 shrink-0" aria-hidden />
-            Serving businesses in {site.contact.serviceArea}
-          </p>
         </div>
 
         <OrbitGraphic />

@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label";
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select";
 import { Textarea } from "@/components/ui/textarea";
 import type { ContactField, ContactFormState } from "@/lib/contact";
+import { phoneHref } from "@/lib/contact-links";
 import { site } from "@/lib/site";
 
 const initialState: ContactFormState = { status: "idle" };
@@ -49,7 +50,18 @@ export function ContactForm({
         </h2>
         <p className="max-w-lg text-base leading-relaxed text-muted-foreground">
           We&apos;ll reply within {site.contact.responseTime}. If it&apos;s urgent,
-          call us on {site.contact.phone}.
+          call us on{" "}
+          {phoneHref ? (
+            <a
+              href={phoneHref}
+              className="font-semibold text-navy-raised underline-offset-4 hover:underline"
+            >
+              {site.contact.phone}
+            </a>
+          ) : (
+            <span className="font-semibold text-navy-raised">{site.contact.phone}</span>
+          )}
+          .
         </p>
         <Button
           variant="outline"

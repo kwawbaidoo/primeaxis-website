@@ -3,13 +3,14 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { Logo } from "@/components/site/logo";
 import { services } from "@/lib/services";
+import { emailHref, phoneHref } from "@/lib/contact-links";
 import { mainNav, site } from "@/lib/site";
 
 const contactRows = [
-  { icon: PhoneIcon, label: site.contact.phone },
-  { icon: MailIcon, label: site.contact.email },
+  { icon: PhoneIcon, label: site.contact.phone, href: phoneHref },
+  { icon: MailIcon, label: site.contact.email, href: emailHref },
   // { icon: MapPinIcon, label: site.contact.address },
-  { icon: ClockIcon, label: site.contact.hours },
+  { icon: ClockIcon, label: site.contact.hours, href: undefined },
 ];
 
 export function SiteFooter() {
@@ -47,10 +48,16 @@ export function SiteFooter() {
         </FooterColumn>
 
         <FooterColumn title="Contact">
-          {contactRows.map(({ icon: Icon, label }) => (
+          {contactRows.map(({ icon: Icon, label, href }) => (
             <li key={label} className="flex items-start gap-2.5">
               <Icon className="mt-0.5 size-4.5 shrink-0 text-teal" aria-hidden />
-              {label}
+              {href ? (
+                <a href={href} className="wrap-break-word hover:text-white hover:underline">
+                  {label}
+                </a>
+              ) : (
+                label
+              )}
             </li>
           ))}
         </FooterColumn>

@@ -4,6 +4,7 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { PageEyebrow, PageHeader } from "@/components/site/page-header";
 import { services } from "@/lib/services";
 import { pageMetadata } from "@/lib/metadata";
+import { emailHref, phoneHref } from "@/lib/contact-links";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
@@ -13,10 +14,10 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const details = [
-  { icon: PhoneIcon, label: "Phone", value: site.contact.phone },
-  { icon: MailIcon, label: "Email", value: site.contact.email },
+  { icon: PhoneIcon, label: "Phone", value: site.contact.phone, href: phoneHref },
+  { icon: MailIcon, label: "Email", value: site.contact.email, href: emailHref },
   // { icon: MapPinIcon, label: "Office", value: site.contact.address || "N/A" },
-  { icon: ClockIcon, label: "Hours", value: site.contact.hours },
+  { icon: ClockIcon, label: "Hours", value: site.contact.hours, href: undefined },
 ];
 
 const nextSteps = [
@@ -49,14 +50,25 @@ export default function ContactPage() {
                 Contact details
               </h2>
               <dl className="mt-5 flex flex-col gap-4">
-                {details.map(({ icon: Icon, label, value }) => (
+                {details.map(({ icon: Icon, label, value, href }) => (
                   <div key={label} className="flex items-start gap-3">
                     <Icon className="mt-0.5 size-5 shrink-0 text-teal" aria-hidden />
                     <div className="flex flex-col">
                       <dt className="text-xs font-semibold tracking-[0.12em] text-on-navy-muted uppercase">
                         {label}
                       </dt>
-                      <dd className="text-[0.9375rem] text-white">{value}</dd>
+                      <dd className="text-[0.9375rem] text-white">
+                        {href ? (
+                          <a
+                            href={href}
+                            className="wrap-break-word underline decoration-white/30 underline-offset-4 hover:decoration-white"
+                          >
+                            {value}
+                          </a>
+                        ) : (
+                          value
+                        )}
+                      </dd>
                     </div>
                   </div>
                 ))}

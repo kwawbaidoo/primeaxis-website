@@ -83,12 +83,12 @@ export const faqs = [
   {
     question: "How much does a project cost?",
     answer:
-      "It depends on what you need. After a short conversation about your goals, we send a written quote with the full scope and price, usually within [NUMBER] business days.",
+      "It depends on what you need. After a short conversation about your goals, we send a written quote with the full scope and price, usually within 24 business days.",
   },
   {
     question: "How long does it take to build a website?",
     answer:
-      "A typical business website takes [NUMBER] to [NUMBER] weeks from the first call to launch. Custom software and mobile apps are planned in stages, and your proposal includes a timeline.",
+      "A typical business website takes 2 weeks to 4 weeks from the first call to launch. Custom software and mobile apps are planned in stages, and your proposal includes a timeline.",
   },
   {
     question: "Do you work with small businesses and startups?",
