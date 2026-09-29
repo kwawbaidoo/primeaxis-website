@@ -104,7 +104,7 @@ export async function sendContactMessage(
     .join("\n");
 
   const { error } = await new Resend(apiKey).emails.send({
-    from: process.env.CONTACT_FROM_EMAIL || "PrimeAxis Website <onboarding@resend.dev>",
+    from: process.env.CONTACT_FROM_EMAIL || "PrimeAxis Solutions <onboarding@resend.dev>",
     to,
     replyTo: email,
     subject: `New enquiry from ${name}${serviceTitle ? ` (${serviceTitle})` : ""}`,

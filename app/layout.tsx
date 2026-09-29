@@ -3,6 +3,7 @@ import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
+import { WhatsAppButton } from "@/components/site/whatsapp-button";
 import { isSiteUrlConfigured, shareImage, siteUrl } from "@/lib/metadata";
 import { site } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        <WhatsAppButton />
       </body>
     </html>
   );

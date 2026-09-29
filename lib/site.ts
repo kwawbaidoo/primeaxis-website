@@ -6,11 +6,11 @@ export const site = {
   shortDescription: "Software, design and IT services for growing businesses.",
   // Placeholders until the real contact details are confirmed.
   contact: {
-    phone: "+233 20 123 6413",
+    phone: "+233 242 607 095",
     email: "primeaxis.solutions@gmail.com",
     address: "[OFFICE ADDRESS]",
     hours: "24/7",
-    serviceArea: "[CITY / REGION]",
+    serviceArea: "Ghana",
     responseTime: "24 hours",
   },
 };
